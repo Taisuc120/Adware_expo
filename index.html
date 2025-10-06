@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Adware - Presentación Responsiva</title>
+  <title>Adware - Presentación Móvil y Escritorio</title>
   <style>
     * {
       margin: 0;
@@ -94,7 +94,7 @@
       right: clamp(10px, 2vw, 30px);
     }
 
-    /* Botones móviles (solo visibles en pantallas pequeñas) */
+    /* Botones flotantes móviles (pequeños y discretos) */
     .mobile-nav {
       position: fixed;
       bottom: 20px;
@@ -103,7 +103,7 @@
       justify-content: space-between;
       padding: 0 20px;
       z-index: 1000;
-      pointer-events: none;
+      pointer-events: none; /* permite clic a través del espacio vacío */
     }
 
     .mobile-nav button {
@@ -134,7 +134,7 @@
       z-index: 2;
     }
 
-    /* Ocultar botones en pantallas grandes (escritorio) */
+    /* Ocultar botones en escritorio grande */
     @media (min-width: 1024px) {
       .mobile-nav {
         display: none;
@@ -145,8 +145,8 @@
 <body>
 
   <!-- 🔥 Logos responsivos -->
-  <img src="img/Imagen2.png" alt="Logo Izquierdo" class="logo-left">
-  <img src="img/Imagen1.png" alt="Logo Derecho" class="logo-right">
+  <img src="URL_DEL_LOGO_IZQUIERDO" alt="Logo Izquierdo" class="logo-left">
+  <img src="URL_DEL_LOGO_DERECHO" alt="Logo Derecho" class="logo-right">
 
   <!-- Diapositivas -->
   <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1350&q=80');">
@@ -237,14 +237,14 @@
     </div>
   </div>
 
-  <!-- Botones flotantes solo para móviles -->
+  <!-- Botones flotantes solo en móviles -->
   <div class="mobile-nav">
     <button onclick="changeSlide(-1)">⬅</button>
     <button onclick="changeSlide(1)">➡</button>
   </div>
 
   <footer>
-    <p>© 2025 - ISTPE | Seguridad Informática</p>
+    <p>© 2025 - Universidad Nacional de Ingeniería | Seguridad de la Información</p>
   </footer>
 
   <script>
@@ -253,7 +253,7 @@
 
     function showSlide(n) {
       slides.forEach(slide => slide.classList.remove('active'));
-      currentSlide = (n + slides.length) % slides.currentSlide;
+      currentSlide = (n + slides.length) % slides.length;
       slides[currentSlide].classList.add('active');
     }
 
@@ -261,7 +261,7 @@
       showSlide(currentSlide + direction);
     }
 
-    // Navegación con teclado (escritorio)
+    // Teclado (escritorio)
     document.addEventListener('keydown', function(e) {
       if (e.key === 'ArrowRight') changeSlide(1);
       if (e.key === 'ArrowLeft') changeSlide(-1);
