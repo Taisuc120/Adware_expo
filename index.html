@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Adware - Presentación Sin Botones</title>
+  <title>Adware - Presentación Responsiva</title>
   <style>
     * {
       margin: 0;
@@ -94,6 +94,36 @@
       right: clamp(10px, 2vw, 30px);
     }
 
+    /* Botones móviles (solo visibles en pantallas pequeñas) */
+    .mobile-nav {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    .mobile-nav button {
+      pointer-events: all;
+      background-color: rgba(255, 255, 255, 0.3);
+      color: white;
+      border: 1px solid white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .mobile-nav button:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
     footer {
       position: absolute;
       bottom: 10px;
@@ -102,6 +132,13 @@
       font-size: clamp(0.7rem, 1.5vw, 1rem);
       color: #ccc;
       z-index: 2;
+    }
+
+    /* Ocultar botones en pantallas grandes (escritorio) */
+    @media (min-width: 1024px) {
+      .mobile-nav {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -200,8 +237,14 @@
     </div>
   </div>
 
+  <!-- Botones flotantes solo para móviles -->
+  <div class="mobile-nav">
+    <button onclick="changeSlide(-1)">⬅</button>
+    <button onclick="changeSlide(1)">➡</button>
+  </div>
+
   <footer>
-    <p>© 2025 - ISTPE | Seguridad Informatica</p>
+    <p>© 2025 - ISTPE | Seguridad Informática</p>
   </footer>
 
   <script>
@@ -210,7 +253,7 @@
 
     function showSlide(n) {
       slides.forEach(slide => slide.classList.remove('active'));
-      currentSlide = (n + slides.length) % slides.length;
+      currentSlide = (n + slides.length) % slides.currentSlide;
       slides[currentSlide].classList.add('active');
     }
 
@@ -218,9 +261,25 @@
       showSlide(currentSlide + direction);
     }
 
+    // Navegación con teclado (escritorio)
     document.addEventListener('keydown', function(e) {
       if (e.key === 'ArrowRight') changeSlide(1);
       if (e.key === 'ArrowLeft') changeSlide(-1);
+    });
+
+    // Gestos táctiles (móvil)
+    let startX = 0;
+    document.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+    });
+
+    document.addEventListener('touchend', function(e) {
+      let endX = e.changedTouches[0].clientX;
+      let diff = startX - endX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) changeSlide(1); // izquierda
+        else changeSlide(-1); // derecha
+      }
     });
 
     showSlide(0);
