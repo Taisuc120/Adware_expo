@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adware - Presentación Auditorio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      color: white;
+      background: #000;
+    }
+
+    .slide {
+      width: 100vw;
+      height: 100vh;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 4rem;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 90%;
+    }
+
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+    }
+
+    ul, ol {
+      text-align: left;
+      margin-left: 2rem;
+      font-size: 1.8rem;
+      line-height: 1.6;
+    }
+
+    /* 🔥 Logos en esquinas */
+    .logo-left,
+    .logo-right {
+      position: absolute;
+      top: 30px;
+      z-index: 10;
+      width: 100px;
+      height: auto;
+      filter: drop-shadow(0 0 5px rgba(0,0,0,0.7));
+    }
+
+    .logo-left {
+      left: 30px;
+    }
+
+    .logo-right {
+      right: 30px;
+    }
+
+    .nav-buttons {
+      position: fixed;
+      bottom: 40px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 3rem;
+      z-index: 1000;
+    }
+
+    .nav-buttons button {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #000;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      font-weight: bold;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-buttons button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 1rem;
+      color: #ccc;
+      z-index: 2;
+    }
+
+    @media (max-width: 900px) {
+      h1 { font-size: 3rem; }
+      h2 { font-size: 2.5rem; }
+      ul, ol { font-size: 1.5rem; }
+      .logo-left, .logo-right { width: 70px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔥 Logos en esquinas -->
+  <img src="img/Imagen2.png" alt="Logo Izquierdo" class="logo-left">
+  <img src="img/Imagen1.png" alt="Logo Derecho" class="logo-right">
+
+  <!-- Diapositiva 1: Título -->
+  <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1350&q=80');">
+    <div class="content">
+      <h1>Adware</h1>
+      <p style="font-size: 2rem;">Historia, Definición, Funcionamiento, Propagación, Impacto y Casos Reales</p>
+    </div>
+  </div>
+
+  <!-- Diapositiva 2: Historia -->
+  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1350&q=80');">
+    <div class="content">
+      <h2>📜 Historia</h2>
+      <ul>
+        <li><strong>1995:</strong> Eudora incluye banners para financiar versión gratuita.</li>
+        <li><strong>2005:</strong> Zango populariza el bundling agresivo.</li>
+        <li><strong>2016:</strong> HummingBad infecta 10M móviles.</li>
+        <li><strong>2020-24:</strong> Adware como vector de ransomware (Royal, BlackCat).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Diapositiva 3: Definición -->
+  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1350&q=80');">
+    <div class="content">
+      <h2>🧾 Definición</h2>
+      <p style="font-size: 2rem;">Software que muestra publicidad o roba datos <strong>sin consentimiento informado</strong>.</p>
+      <ul>
+        <li>Legítimo: Spotify Free</li>
+        <li>PUA: pre-marcado en instaladores</li>
+        <li>Malicioso: oculto, rootkit, robo de datos</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Diapositiva 4: Funcionamiento -->
+  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1350&q=80');">
+    <div class="content">
+      <h2>⚙️ Funcionamiento</h2>
+      <ol>
+        <li>Instalación por bundling o extensión falsa</li>
+        <li>Persistencia vía Run, WMI, Scheduled Tasks</li>
+        <li>Inyección de anuncios (proxy PAC, JS)</li>
+        <li>Seguimiento: fingerprint, credenciales</li>
+        <li>Actualización: descarga ransomware</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Diapositiva 5: Propagación -->
+  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1350&q=80');">
+    <div class="content">
+      <h2>📤 Propagación</h2>
+      <ul>
+        <li><strong>Freeware:</strong> 62% proviene de CNET, Softonic…</li>
+        <li><strong>Malvertising:</strong> Google Ads, YouTube</li>
+        <li><strong>Extensiones</strong> clonadas (PDF Converter…)</li>
+        <li><strong>APK falsas:</strong> APKPure, WhatsApp Gold, TikTok clones</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Diapositiva 6: Impacto -->
+  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1563974514898-1c9657c2e6e8?auto=format&fit=crop&w=1350&q=80');">
+    <div class="content">
+      <h2>💥 Impacto</h2>
+      <ul>
+        <li><strong>Económico:</strong> USD 8 200 promedio por incidente PYME</li>
+        <li><strong>Operativo:</strong> ralentización, cancelación de servicios</li>
+        <li><strong>Legal:</strong> multas GDPR hasta 4% facturación global</li>
+        <li><strong>Social:</strong> pérdida de confianza, estrés usuario</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Diapositiva 7: Ejemplos -->
+  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=1350&q=80');">
+    <div class="content">
+      <h2>📊 Ejemplos de Infección</h2>
+      <ul>
+        <li><strong>Fireball (2017):</strong> 250M PCs, proxy PAC, roba credenciales</li>
+        <li><strong>Eorezo (2020):</strong> VLC modificado, multa CNIL 50k€</li>
+        <li><strong>Adware.Elex (2022):</strong> 18% hospitales España, cambia DNS</li>
+        <li><strong>HiddenAds (2023):</strong> 46% móviles Perú, suscripción SMS</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Diapositiva 8: Conclusión -->
+  <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1350&q=80');">
+    <div class="content">
+      <h2>✅ Conclusión</h2>
+      <p style="font-size: 2rem;">El adware ya no es solo publicidad molesta: es una puerta de entrada a amenazas graves.</p>
+      <p style="font-size: 1.8rem;">Protégete: tiendas oficiales, desmarca opciones, usa anti-PUA.</p>
+    </div>
+  </div>
+
+  <!-- Navegación -->
+  <div class="nav-buttons">
+    <button id="prevBtn" onclick="changeSlide(-1)">⬅ Anterior</button>
+    <button id="nextBtn" onclick="changeSlide(1)">Siguiente ➡</button>
+  </div>
+
+  <footer>
+    <p>© 2025 - ISTPE | Seguridad Informatica</p>
+  </footer>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(n) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      currentSlide = (n + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+
+      document.getElementById('prevBtn').disabled = currentSlide === 0;
+      document.getElementById('nextBtn').disabled = currentSlide === slides.length - 1;
+    }
+
+    function changeSlide(direction) {
+      showSlide(currentSlide + direction);
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowRight') changeSlide(1);
+      if (e.key === 'ArrowLeft') changeSlide(-1);
+    });
+
+    showSlide(0);
+  </script>
+
+</body>
+</html>
